@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn" onclick="openLoginModal()">Registrar Proyecto</a>
+                    <div class="dropdown-content">
+                        <a href="logout.php">Cerrar Sesión</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <h1>LABORATORIO DE CIENCIAS SOCIALES Y MÉTODOS DE INVESTIGACIÓN</h1>
+    </header>
+    <main>
+        <div id="container">
+            <div class="upper-left">
+                <iframe 
+                width="100%" 
+                height="100%" id="video" 
+                src="https://www.youtube.com/embed/G_9_aVHVSqk&ab_channel" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+            </div>
+            <div class="upper-right">
+                <div class="description">
+                    <h2>Descripción</h2>
+                    <p>El laboratorio proporciona herramientas avanzadas para el análisis exhaustivo de datos cualitativos y cuantitativos, 
+                       respaldando la investigación en diversos fenómenos sociales, políticos y culturales. Mediante métodos rigurosos y 
+                       tecnología especializada, facilita el estudio profundo de tendencias y patrones emergentes, promoviendo así el desarrollo 
+                       de conocimiento crítico y perspectivas informadas en áreas clave de estudio. Además, ofrece recursos innovadores que 
+                       fortalecen la capacidad investigativa de académicos y profesionales, fomentando colaboraciones interdisciplinarias y 
+                       contribuciones significativas al entendimiento y abordaje de problemáticas contemporáneas.</p>
+                </div>
+            </div>
+            <div class="middle-left">
+                <div class="services">
+                    <h2>Servicios</h2>
+                    <ul>
+                        <li>Consultoría Metodológica</li>
+                        <li>Formación en Análisis</li>
+                        <li>Publicación y Difusión</li>
+                        <li>Infraestructura Tecnológica</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="middle-right">
+                <div class="resources">
+                    <h2>Recursos disponibles</h2>
+                    <ul>
+                        <li>Herramientas avanzadas como SPSS, NVivo, R</li>
+                        <li>Áreas físicas y virtuales diseñadas para la colaboración</li>
+                        <li>Suscripciones a revistas académicas y acceso a bibliotecas digitales para revisión de literatura y contextualización teórica</li>
+                        <li>Proyector/VideoBeam</li>
+                        <li>Personal técnico especializado disponible para asistir en el uso de equipos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-left">
+                <div class="projects">
+                    <h2>Proyectos</h2>
+                    <ul id="project-list">
+                        <!-- Los proyectos serán insertados aquí por JavaScript -->
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-right">
+                <div class="quotation">
+                    <h2>Cotización</h2>
+                    <form id="cotizacion-form">
+                        <label for="laboratorio">Laboratorio:</label>
+                        <select id="laboratorio" name="laboratorio" required>
+                            
+                        </select><br><br>
+
+                        <label for="horas">Horas:</label>
+                        <input type="number" id="horas" name="horas" placeholder="Número de horas a cotizar" min="1" required><br><br>
+
+                        <label for="comentarios">Comentarios:</label>
+                        <textarea id="comentarios" name="comentarios" maxlength="500" style="width: 421px; height: 97px;" placeholder="Describa que va a necesitar o usar de el laboratorio" required></textarea><br><br>
+
+                        <button type="button" id="cotizarBtn" class="cotizarBtn" onclick="cotizar()">COTIZAR</button>
+                    </form>
+                    <div id="resultado-cotizacion"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="modal-message">Contacto: 3152916083</p>
+        </div>
+    </div>   
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form" onsubmit="login(event)">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProjectModal()">&times;</span>
+            <h2>Registro de Proyectos</h2>
+            <form id="project-form" onsubmit="registerProject(event)">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+                <label for="autores">Autor/es:</label>
+                <input type="text" id="autores" name="autores" required>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" required></textarea>
+                <label for="codigo">Código de Laboratorio:</label>
+                <input type="text" id="codigo" name="codigo" required>
+                <label for="cedula">Cédula del Autor:</label>
+                <input type="text" id="cedula" name="cedula" required>
+                <button type="submit">Registrar Proyecto</button>
+            </form>
+        </div>
+    </div>
+    <script src="proyectos.js"></script>
+    <script src="cotizacion.js"></script>
+    <script src="modal.js"></script>
+</body>
+</html>

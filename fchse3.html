@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn" onclick="openLoginModal()">Registrar Proyecto</a>
+                    <div class="dropdown-content">
+                        <a href="logout.php">Cerrar Sesión</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <h1>LABORATORIO DE PEDAGOGÍA Y TECNOLOGÍA EDUCATIVA</h1>
+    </header>
+    <main>
+        <div id="container">
+            <div class="upper-left">
+                <iframe 
+                width="100%" 
+                height="100%" id="video" 
+                src="https://www.youtube.com/embed/MzaM-Adl0rU&ab_channel" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+                </iframe>
+            </div>
+            <div class="upper-right">
+                <div class="description">
+                    <h2>Descripción</h2>
+                    <p>El laboratorio de pedagogía y tecnología educativa se especializa en diseñar y implementar entornos de aprendizaje 
+                       innovadores con el uso de tecnologías avanzadas. Su misión es preparar a educadores para los desafíos del siglo XXI, 
+                       utilizando herramientas como plataformas digitales, realidad aumentada e inteligencia artificial. Estas tecnologías no 
+                       solo mejoran la participación y el aprendizaje activo de los estudiantes, sino que también desarrollan habilidades 
+                       críticas como el pensamiento crítico y la colaboración. Además, el laboratorio ofrece programas de formación continua, 
+                       investigaciones aplicadas y colaboraciones interdisciplinarias para transformar la educación y asegurar que los educadores 
+                       estén equipados para liderar en un entorno educativo en constante cambio.</p>
+                </div>
+            </div>
+            <div class="middle-left">
+                <div class="services">
+                    <h2>Servicios</h2>
+                    <ul>
+                        <li>Consultoría Pedagógica</li>
+                        <li>Formación y Desarrollo Profesional</li>
+                        <li>Investigación y Evaluación</li>
+                        <li>Laboratorio de Innovación</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="middle-right">
+                <div class="resources">
+                    <h2>Recursos disponibles</h2>
+                    <ul>
+                        <li>Herramientas como plataformas de aprendizaje virtual</li>
+                        <li>Acceso a bibliotecas digitales, repositorios de recursos educativos abiertos</li>
+                        <li>Equipo de profesionales en pedagogía, tecnología educativa</li>
+                        <li>Proyector/VideoBeam</li>
+                        <li>Sistemas robustos de redes informáticas, seguridad cibernética</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-left">
+                <div class="projects">
+                    <h2>Proyectos</h2>
+                    <ul id="project-list">
+                        <!-- Los proyectos serán insertados aquí por JavaScript -->
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-right">
+                <div class="quotation">
+                    <h2>Cotización</h2>
+                    <form id="cotizacion-form">
+                        <label for="laboratorio">Laboratorio:</label>
+                        <select id="laboratorio" name="laboratorio" required>
+                            
+                        </select><br><br>
+
+                        <label for="horas">Horas:</label>
+                        <input type="number" id="horas" name="horas" placeholder="Número de horas a cotizar" min="1" required><br><br>
+
+                        <label for="comentarios">Comentarios:</label>
+                        <textarea id="comentarios" name="comentarios" maxlength="500" style="width: 421px; height: 97px;" placeholder="Describa que va a necesitar o usar de el laboratorio" required></textarea><br><br>
+
+                        <button type="button" id="cotizarBtn" class="cotizarBtn" onclick="cotizar()">COTIZAR</button>
+                    </form>
+                    <div id="resultado-cotizacion"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="modal-message">Contacto: 3152916083</p>
+        </div>
+    </div>   
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form id="login-form" onsubmit="login(event)">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProjectModal()">&times;</span>
+            <h2>Registro de Proyectos</h2>
+            <form id="project-form" onsubmit="registerProject(event)">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+                <label for="autores">Autor/es:</label>
+                <input type="text" id="autores" name="autores" required>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" required></textarea>
+                <label for="codigo">Código de Laboratorio:</label>
+                <input type="text" id="codigo" name="codigo" required>
+                <label for="cedula">Cédula del Autor:</label>
+                <input type="text" id="cedula" name="cedula" required>
+                <button type="submit">Registrar Proyecto</button>
+            </form>
+        </div>
+    </div>
+    <script src="proyectos.js"></script>
+    <script src="cotizacion.js"></script>
+    <script src="modal.js"></script>
+</body>
+</html>
